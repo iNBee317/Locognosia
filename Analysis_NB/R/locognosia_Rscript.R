@@ -412,4 +412,30 @@ ggplot(patmean, aes(y=mean_mm,x=yss))+geom_point(shape=16,size=3)+geom_smooth(me
 ggplot(tranmean, aes(y=mean_mm,x=ybis))+geom_point(shape=16,size=3)+geom_smooth(method=lm,se=F,colour="black",weight=4)+ylab("Mean Error (mm)")+xlab("Years Between Injury and Surgery")+
   theme(axis.text.x = element_text(angle = 0, hjust = .5, size=16,color="black",face='bold'),axis.text.y = element_text(angle = 0, hjust = .5, size=16,color="black",face='bold'),axis.title.x = element_text(angle = 0, hjust = .5, size=16,color="black",face='bold'),axis.title.y = element_text(angle = 90, hjust = .5, size=16,color="black",face='bold'))
 
-c
+
+##Amputee anaysis##
+#test for amputees aw vs uw
+amp_means=tapply(amputee$mm,list(amputee$init2,amputee$ah_uh),mean,NA.RM=T)
+wrist_aw=amp_means[1,16:22]
+wrist_uw=amp_means[3,16:22]
+t.test(wrist_aw,wrist_uw,paired=T)
+
+age_amp=c(42,62,46,58,43,67,31,64,43,56,56,47,61,86,38,52,29,37,20,65,32,50)
+plot(age_amp,amp_means[1,]) #plot of age and aw mean loc
+plot(age_amp,amp_means[2,]) #plot of age and uh mean loc
+plot(age_amp,amp_means[3,]) #plot of age and uw mean loc
+gender_amp=c("m","m","f","m","m","f","f","f","f","m","m","m","m","m","f","m","m","f","m","m","m","m")
+gender_amp=as.factor(gender_amp)
+plot(gender_amp,amp_means[1,]) #plot of gender and aw mean loc
+plot(gender_amp,amp_means[2,]) #plot of gender and uh mean loc
+plot(gender_amp,amp_means[3,]) #plot of gender and uw mean loc
+
+#test for amputees intact hand vs controls hands
+cont_means=tapply(control$mm,list(control$ah_uh_control,control$initials),mean,NA.RM=T) #find means of controls locognosia scores per subject
+cont_hands=cont_means[1,] #store hand means in a variable
+amp_hands=amp_means[2,c(1:11,14:22)] #store amp hand means in var
+t.test(cont_hands,amp_hands)
+
+
+
+
