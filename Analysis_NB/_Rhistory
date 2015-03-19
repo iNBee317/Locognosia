@@ -1,0 +1,512 @@
+FUN=mean, na.rm=TRUE)
+aggdata <-aggregate(DR$mm, by=list(ah_uh,initials),
+FUN=mean, na.rm=TRUE)
+aggdata <-aggregate(DR$mm, by=list(ah_uh,subnum),
+FUN=mean, na.rm=TRUE)
+aggdata <-aggregate(DR$mm, by=ah_uh,
+FUN=mean, na.rm=TRUE)
+sumdr=tapply(DR$mm, list(DR$ah_uh,DR$subnum),mean,na.rm=T)
+sumdr
+sumdr=tapply(DR$mm, list(DR$ah_uh,DR$subnum),sum,na.rm=T)
+sumdr
+ggplot(dat, aes(x=reorder(initials, t.sincesurgery,mean),y=mm)) +
+geom_bar(aes(fill = ah_uh), position = "dodge",stat="identity")+
+coord_flip()#+scale_x_discrete(limits=labels)
+ggplot(dat, aes(x=reorder(initials, list(dat$initials,dat$t.sincesurgery),mean),y=mm)) +
+geom_bar(aes(fill = ah_uh), position = "dodge",stat="identity")+
+coord_flip()#+scale_x_discrete(limits=labels)
+ggplot(dat, aes(x=reorder(dat$initials, list(dat$initials,dat$t.sincesurgery),mean),y=mm)) +
+geom_bar(aes(fill = ah_uh), position = "dodge",stat="identity")+
+coord_flip()#+scale_x_discrete(limits=labels)
+ggplot(dat, aes(x=reorder(initials, initials,mean),y=mm)) +
+geom_bar(aes(fill = ah_uh), position = "dodge",stat="identity")+
+coord_flip()#+scale_x_discrete(limits=labels)
+ggplot(dat, aes(x=tapply(dat$mm, list(dat$initials,dat$ah_uh),mean,na.rm=T),y=mm)) +
+geom_bar(aes(fill = ah_uh), position = "dodge",stat="identity")+
+coord_flip()#+scale_x_discrete(limits=labels)
+ggplot(dat, aes(x=initials,y=mm)) +
+stat_summary(fun.y="mean", geom="bar", width=0.5)
+View(dat)
+meang
+ggplot(dat, aes(x=initials,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh), geom="bar", width=0.5)
+ggplot(dat, aes(x=initials,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)
+coord_flip()#+scale_x_discrete(limits=labels)
+ggplot(dat, aes(x=initials,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()
+ggplot(meang, aes(x=initials,y=mm)) +
+geom_bar(aes(fill = hand), position = "dodge",stat="identity")+
+coord_flip()#+scale_x_discrete(limits=labels)
+ggplot(dat, aes(x=initials,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+ggplot(dat, aes(x=initials,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)
+#Uses the original data frame and calculates means
+ggplot(dat, aes(aes(fill = ah_uh),x=initials,y=mm)) +
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+ggplot(dat, aes(x=initials,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+zzz=c(1:10)
+ciMean(zzz, conf = 0.95, na.rm = FALSE)
+require(psych)
+summary(zzz)
+summary(dat)
+describe(zzz)
+describe(dat)
+aggregate(zzz,mean)
+dat
+levels(dat$initials)
+table(dat$initials)
+table(dat$initials)[1]
+sum(table(dat$initials)[1:14])
+sum(table(dat$initials)[15:23])
+1024+328
+dat$initials
+levels(dat$initials)
+init1=dat$initials
+init1
+levels(init1)
+levels(init1)[1:14]
+levels(init1)[1:14]=c("C")
+init1
+dat1=data.frame(dat,init1)
+View(dat1)
+colnames(dat)
+colnames(dat1)
+colnames(dat1)[23]=ini
+ggplot(dat1, aes(x=init1,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+ggplot(dat1, aes(x=init1,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()#+scale_x_discrete(limits=labels)
+meang1=tapply(dat1$mm, list(dat1$init1,dat1$ah_uh),mean,na.rm=T)
+meang1
+labels=rev(levels(dat1$init1))
+labels
+ggplot(dat1, aes(x=init1,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+labels
+levels(dat1$init1)
+levels(dat1$init1)[1]=c("Controls")
+labels=rev(levels(dat1$init1))
+ggplot(dat1, aes(x=init1,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+seg=tapply(dat1$mm, list(dat1$ah_uh, dat1$init1),sd,na.rm=T)
+seg
+seg=tapply(dat1$mm, list(dat1$ah_uh, dat1$init1),ciMean,na.rm=T)
+seg
+seg=tapply(dat1$mm, list(dat1$init1,dat1$ah_uh ),ciMean,na.rm=T)
+seg
+class(seg)
+as.vector(seg)
+as.list(seg)
+ciMean
+computeCI <- function(x, conf, na.rm) {
+if (na.rm) {
+x <- x[!is.na(x)]
+}
+quantiles <- c((1 - conf)/2, (1 + conf)/2)
+n <- length(x)
+if (length(x) < 2 | any(is.na(x))) {
+CI <- c(NA, NA)
+}
+else {
+CI <- mean(x) + qt(p = quantiles, df = n - 1) * sd(x)/sqrt(n)
+if (sd(x) == 0)
+warning("data have zero variance")
+}
+names(CI) <- getNames(quantiles)
+return(CI)
+}
+computeCI(zzz,.95,na.rm)
+computeCI(zzz,.95)
+computeCI(zzz,.95,T)
+ciMean(dat1)
+seg=tapply(dat1$mm, list(dat1$init1,dat1$ah_uh ),ciMean,na.rm=T)
+ciMean(dat1)
+ciMean(zzz)
+ciMean(zzz)[1]
+seg=tapply(dat1$mm, list(dat1$init1,dat1$ah_uh ),ciMean[1],na.rm=T)
+seg=tapply(dat1$mm, list(dat1$init1,dat1$ah_uh ),ciMean,na.rm=T)
+seg=tapply(dat1$mm, list(dat1$init1,dat1$ah_uh ),sd,na.rm=T)
+seg
+seg1=as.vector(seg)
+seg1
+seg=tapply(dat1$mm, list(dat1$ah_uh,dat1$init1 ),sd,na.rm=T)
+seg1=as.vector(seg)
+seg1
+seg
+seg1
+sd()
+sd
+limits=tapply(dat1$mm, list(dat1$ah_uh,dat1$init1 ),sd,na.rm=T)
+limts=as.vector(limits)
+limits
+as.vector(limits)
+limits=tapply(dat1$mm, list(dat1$ah_uh,dat1$init1 ),sd,na.rm=T)
+limits
+limits=as.vector(limits)
+limits
+ggplot(dat1, aes(x=init1,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)+
+geom_errorbar(limits, position=dodge, width=0.25)
+ggplot(dat1, aes(x=init1,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)+geom_errorbar(limits, position="dodge", width=0.25)
+ggplot(dat1, aes(x=init1,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)+geom_errorbar(seg1, position="dodge", width=0.25)
+ggplot(dat1, aes(x=init1,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+geom_errorbar(seg1, position="dodge", width=0.25)+
+coord_flip()+scale_x_discrete(limits=labels)
+install.packages("Hmisc")
+require(Hmisc)
+mean_cl_normal
+?mean_cl_normal
+ggplot(dat1, aes(x=init1,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)+
+stat_summary(fun.data = mean_cl_normal, geom = "errorbar", mult = 1)
+ggplot(dat1, aes(x=init1,y=mm)) +
+stat_summary(fun.y="mean",aes(fill = ah_uh),position = "dodge", geom="bar", width=0.5)+
+stat_summary(fun.data=mean_cl_normal,position=position_dodge(0.95),geom="errorbar")+
+coord_flip()+scale_x_discrete(limits=labels)
+ggplot(dat1, aes(x=factor(init1),y=mm, colour=factor(ah_uh),fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+ggplot(dat1, aes(x=factor(init1),y=mm, colour=factor(ah_uh),fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+tapply(DR$mm, list(DR$ah_uh),sd,na.rm=T)
+tapply(DR$mm, list(DR$ah_uh),mean_cl_normal,na.rm=T)
+tapply(DR$mm, list(DR$ah_uh),mean,na.rm=T)
+length(DR$mm)
+21.96/sqrt(32)
+tapply(DR$mm, list(DR$ah_uh),var,na.rm=T)
+sqrt(482.5292/32)
+sqrt(482.5292/31)
+3.945308*1.96
+44.4375-56.14
+ciMean(DR$mm)
+ah1=dat1[dat1$ah_uh=="ah"]
+ah1=dat1[dat1$ah_uh=="ah",]
+ah1
+tapply(ah1$mm, list(ah1$init1),clMean,na.rm=T)
+tapply(ah1$mm, list(ah1$init1),ciMean,na.rm=T)
+tapply(ah1$mm, list(ah1$init1),mean_cl_normal,na.rm=T)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+dat[2,2]
+drih=c(3,0,0,1,1,0,0,3,5,1,2,0,0,0,10,0)
+length(drih)
+table(dat1$init1)
+1024+32+32+32+32
+dat1[dat1$init1=="DR-1",]
+dat1[dat1$init1=="Tr-DR1",]
+save.image("C:/Users/Nathan/Google Drive/Academic/Experiments/62-03_locognosia/Analysis_NB/loc_transplant.RData")
+dat1[1,3]
+dat1[,16]
+dat1[1169:1184,16]=c(drih)
+length(dat1$mm)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+coord_flip()+scale_x_discrete(limits=labels)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+xlab("Measurment(mm)")+ylab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels)
+#Uses the original data frame and calculates means
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels)+theme(legend.title=element_blank())
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels)+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels)+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels="1","2","","","","","","","","")+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels="1","2","3","4","5","6","7","8","9","10")+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels)+
+theme(legend.title=element_blank())+them(axis.text.x=c("1","","","","","","","","",""))
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels)+
+theme(legend.title=element_blank())+theme(axis.text.x=c("1","","","","","","","","",""))
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=1:10)+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+levels(dat1$init1)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)"))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+load("loc_transplant.RData")
+require(lsr)
+require(Hmisc)
+require(ggplot2)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurment\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+ theme(strip.text.x = element_text(colour = "red", angle = 45, size = 10,
+hjust = 0.5, vjust = 0.5))+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+ theme(strip.text.x = element_text(colour = "red", angle = 45, size = 10,
+hjust = 0.5, vjust = 0.5))+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+ facet_grid(dat1$t.sincesurgery)+theme(strip.text.x = element_text(colour = "red", angle = 45, size = 10,
+hjust = 0.5, vjust = 0.5))+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+ facet_grid(. ~ t.sincesurgery)+theme(strip.text.x = element_text(colour = "red", angle = 45, size = 10,
+hjust = 0.5, vjust = 0.5))+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+ facet_grid( t.sincesurgery~.)+theme(strip.text.x = element_text(colour = "red", angle = 45, size = 10,
+hjust = 0.5, vjust = 0.5))+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+ facet_grid( t.sincesurgery~)+theme(strip.text.x = element_text(colour = "red", angle = 45, size = 10,
+hjust = 0.5, vjust = 0.5))+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+theme(strip.text.x = element_text(colour = "red", angle = 45, size = 10,
+hjust = 0.5, vjust = 0.5))+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm))+
+geom_boxplot()
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh))+
+geom_boxplot()+coord_flip()
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh))+
+geom_boxplot()+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+pdf("g1.pfd")
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off()
+pdf("g2.pfd")
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh))+
+geom_boxplot()+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),label
+)
+dev.off()
+pdf("g2.pfd")
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh))+
+geom_boxplot()+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off()
+pdf("g2.pfd")
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off
+dev.off()
+pdf("g2.pdf")
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh))+
+geom_boxplot()+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off()
+pdf("g1.pdf")
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off()
+pdf("g1.pdf",height=7,width=9)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off()
+pdf("g1.pdf",height=5,width=7)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off()
+pdf("g2.pdf",height=5,width=7)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh))+
+geom_boxplot()+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off()
+View(dat1)
+dat1[dat1$init1="Tr-DR1"]
+dat1[dat1$init1=="Tr-DR1",]
+View(dat)
+dat[dat$subnum=="Tr-DR1",]
+levels(dat$subnum)
+dat[dat$initials=="Tr-DR1",]
+dat1[1169:1184,16]=drih
+dat[dat$initials=="Tr-DR1",]
+drih
+dat1[1169:1184,16]
+dat[,16]
+View(dat1)
+dat1[,16]
+dat1[dat1$initials=="Tr-DR1",]
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh))+
+geom_boxplot()+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+pdf("g1.pdf",height=5,width=7)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh))+
+geom_boxplot()+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off()
+pdf("g2.pdf",height=5,width=7)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh))+
+geom_boxplot()+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off()
+pdf("g2.pdf",height=5,width=7)
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh)) +
+stat_summary(fun.data="mean_cl_normal",position=position_dodge(0.95),geom="errorbar")+
+stat_summary(fun.y="mean",position = "dodge", geom="bar", width=0.5)+
+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+theme(legend.title=element_blank())+
+scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+dev.off()
+?melt

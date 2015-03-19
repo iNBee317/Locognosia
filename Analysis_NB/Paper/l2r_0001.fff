@@ -1,0 +1,7 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\includegraphics[ height=3in, width=2.5in]{HandRight.jpg}
+\end{figure*}
+\efloatseparator
+ 

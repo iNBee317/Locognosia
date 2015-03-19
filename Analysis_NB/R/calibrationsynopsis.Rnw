@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+<<fig=F,echo=F>>=
+require(lsr)
+require(Hmisc)
+require(ggplot2) 
+require(psych)
+load("loc_data.RData")
+@
+
+\begin{figure}
+\hspace{-4.5cm}
+\includegraphics[width=1.7\linewidth]{timesince.pdf}
+\caption{The correlation coefficient $=$ -0.62}
+\end{figure}
+
+\begin{figure}
+\hspace{-4.5cm}
+\includegraphics[width=1.7\linewidth]{timebetween.pdf}
+\caption{The correlation coefficient $=$ 0.56}
+\end{figure}
+
+\end{document}

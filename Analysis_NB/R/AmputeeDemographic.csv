@@ -1,0 +1,23 @@
+subnum,calibration?,age,gender,dot,dob,domhand,affhand,above/below,Notes
+140123BQ720117,Y,41,M,1/23/2014,11/17/1972,R,L,AE,used mouth
+140127HR520114,Y,62,M,1/27/2014,1/14/1952,R,R,AE,used mouth
+140130JI670123,Y,46,F,1/30/2014,1/23/1967,R,R,AE,used prosthesis
+140305NU550730,Y,57,M,3/5/2014,7/30/1955,R,R,AE,used mouth
+140308KK811214,,32,M,3/5/2014,7/30/1955,R,R,BE,used prosthesis to test left
+140311HK461114,Y,67,F,3/19/2014,11/14/1946,R,R,AE,used prosthesis
+140314PF830219,Y,31,F,3/14/2014,2/19/1983,R,R,AE,"used prosthesis, had tremors in left hand"
+140319PQ520624,Y,61,M,3/19/2014,6/24/1952,R,B,AE/BE,"used prosthesis on right, right was AE, left was BE. Only tested left wrist"
+140321BQ640324,Y,49,M,3/21/2014,3/24/1964,R,R,BE,used mouth to test left side
+140401LQ710418,Y,43,F,4/1/2014,4/18/1971,R,R,AE,used mouth
+03_23,Y,37,F,4/5/2014,2/15/1977,R,R/Bilat,BE,"used strap to test left, also missing thumb on left side "
+140408BF580515,Y,56,M,4/8/2014,5/15/1958,R,R,AE,used mouth to test left
+140421BD610819,Y,52,M,4/21/2014,8/19/1961,R,L,BE,used prosthesis to test right
+140426QC660804,Y,47,M,4/26/2014,8/4/1966,R,B,BE,used strap to test both wrists
+140429JN500119,Y,64,F,4/29/2014,1/19/1950,R,R,AE,used mouth to test left
+140501HQ940114,Y,20,M,5/1/2014,4/14/1994,R,L,BE,used strap to test right
+140507AF750813,Y,38,F,5/7/2014,8/13/1975,R?,L,BE,"used strap to test right, had remnants of hand, birth defect?"
+140520PZ570916,Y,56,M,5/20/2014,9/16/1957,L,L,AE,prosthesis to test right
+140522JR850207,Y,29,M,5/22/2014,2/7/1985,R,R,BE,used strap to test left
+140528PF590128,Y,55,M,5/28/2014,9/1/1928,R,L,BE,"had lost part of left hand, could still hold pen"
+140602PB490304,Y,65,M,6/2/2014,5/4/1949,R,R,BE,used prosthesis to test left
+140605KH701230,Y,43,M,6/5/2014,12/30/1970,R,R,AE,used crease of arm to test left hand

@@ -1,0 +1,34 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[htbp]
+
+\vspace*{2em}
+
+\begin{threeparttable}
+
+\caption{Handedness}
+
+\label{tab:ComplexTable}
+
+\begin{tabular}{lrrrrr} \toprule
+
+Group & Participant & Age& Gender& Hand& \\ \cmidrule(r){5-6}
+
+& & & & Dominant & Affected\\ \midrule
+
+Replant & CH(WH) & 60&Male& Right & Left \\
+
+& JS & 49&Male&Right & Right\\
+
+& PP & 61&Female&Right & Right\\
+
+& RW & 59&Male&Right & Left \\ \midrule
+
+Transplant & DR & 37&Male&Right & Left\\
+
+& GF & 46&Male&Right & Left\\
+
+& MS &49 &Male&Left & Left\\ \midrule
+
+\end{tabular}
+\end{document}

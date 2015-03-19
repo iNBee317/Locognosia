@@ -1,0 +1,28 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Noordenbos%
+}{%
+Noordenbos%
+}{%
+{\protect \APACyear {1972}}%
+}]{%
+noordenbos1972sensory}
+\APACinsertmetastar {%
+noordenbos1972sensory}%
+\begin{APACrefauthors}%
+Noordenbos, W.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1972}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {The sensory stimulus and the verbalization of the
+  response: the pain problem} {The sensory stimulus and the verbalization of
+  the response: the pain problem}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Neurophysiology studied in man, Amsterdam: Excerpta
+  Medica}{}{}{207-214}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

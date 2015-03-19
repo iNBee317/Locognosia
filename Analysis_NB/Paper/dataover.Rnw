@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{fullpage,amsmath,amsthm,amssymb}
+\usepackage[noae]{Sweave}
+\usepackage[utf8]{inputenc}
+
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\setkeys{Gin}{width=1\textwidth}
+
+<<echo=F,fig=F>>=
+load("loc_transplant.RData")
+@
+
+<<echo=F,fig=F>>=
+require(psych)
+require(ggplot2)
+@
+
+\section{Affected hand}
+<<echo=T,fig=F>>=
+tapply(ah$mm,ah$init1,describe)
+@
+\newpage
+\section{Unaffected hand}
+<<echo=T,fig=F>>=
+tapply(uh$mm,uh$init1,describe)
+@
+
+\newpage
+<<echo=F,fig=T>>=
+ggplot(dat1, aes(x=factor(init1),y=mm,fill=ah_uh))+
+  geom_boxplot()+ylab("Measurement\n(mm)")+xlab("Participants\n(Re=Replant,Tr=Transplant)")+
+  coord_flip()+scale_x_discrete(limits=labels,labels=rev(c("Controls","CH\n(Re)","JS\n(Re)","PP\n(Re)","RW\n(Re)","DR1\n(Tr)","DR2\n(Tr)","DR3\n(Tr)","GF\n(Tr)","MS\n(Tr)")))+
+  theme(legend.title=element_blank())+
+  scale_fill_discrete(breaks=c("ah","uh"),labels=c("Affected Hand", "Unaffected Hand"))
+@
+
+
+
+
+\end{document}
