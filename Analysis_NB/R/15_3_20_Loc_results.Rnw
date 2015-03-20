@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+<<echo=F>>=
+setwd("~/Desktop/Locognosia/Analysis_NB/R")
+load("~/Desktop/Locognosia/Analysis_NB/R/loc_amp.RData")
+require(lsr)
+require(Hmisc)
+require(ggplot2) 
+require(psych)
+@
+
+\section*{Descriptives}
+\subsection*{Amputees}
+N=22
+Male=15
+Female=7
+\subsubsection*{Age}
+<<echo=T>>=
+describe(age_amp)
+@
+\subsection*{Controls}
+N=40
+Male=30
+Female=10
+\subsubsection*{Age}
+<<echo=T>>=
+describe(contr_age,na.rm=T)
+@
+
+\section*{Signficance Tests}
+\subsection*{Within Amputees Affected Wrist versus Unaffected Wrist}
+<<echo=T>>=
+describe(wrist_aw)
+describe(wrist_uw)
+t.test(wrist_aw,wrist_uw,paired=T)
+@
+
+\subsection*{Between Amputees and Controls Unaffected Hand's}
+<<echo=T>>=
+describe(cont_hands)
+describe(amp_hands)
+t.test(cont_hands,amp_hands)
+@
+
+\newpage
+\subsection*{Correlation: Age and Amputees Unaffected Wrist}
+\begin{verbatim}
+Pearsons product-moment correlation
+data:  x_uw_age and y_uw
+t = 0.1375, df = 5, p-value = 0.896
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.7252079  0.7784482
+sample estimates:
+       cor 
+0.06136081 
+\end{verbatim}
+<<echo=T,fig=T>>=
+plot(age_amp,amp_means[3,]) #plot of age and uw mean loc
+abline(lm(y_aw~x_aw_age), col="red")
+@
+
+\newpage
+\subsection*{Correlation: Age and Amputees Unaffected Hand}
+\begin{verbatim}
+Pearsons product-moment correlation
+data:  x_uh_age and y_uh
+t = 2.0326, df = 18, p-value = 0.05711
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.01292106  0.73421001
+sample estimates:
+      cor 
+0.4320702
+\end{verbatim}
+<<echo=T,fig=T>>=
+plot(age_amp,amp_means[2,]) #plot of age and uh mean loc
+abline(lm(y_uh~x_uh_age), col="red")
+@
+
+\newpage
+\subsection*{Correlation: Age and Amputees Affected Wrist}
+\begin{verbatim}
+Pearsons product-moment correlation
+data:  x_aw_age and y_aw
+t = -0.6766, df = 9, p-value = 0.5157
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.7242857  0.4376354
+sample estimates:
+       cor 
+-0.2199938 
+\end{verbatim}
+<<echo=T,fig=T>>=
+plot(age_amp,amp_means[3,]) #plot of age and uw mean loc
+abline(lm(y_aw~x_aw_age), col="red")
+@
+
+\end{document}

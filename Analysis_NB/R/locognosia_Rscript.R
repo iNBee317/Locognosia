@@ -21,6 +21,7 @@ calibamp=read.table("calibscores_amp.csv",header=T,sep=",")
 patmean=read.table("master_meantransrepl.csv",header=T,sep=",")
 tranmean=read.table("master_meantrans.csv",header=T,sep=",")
 ampdemo=read.table("AmputeeDemographic.csv",header=T,sep=",")
+contdemo=read.table("control_demog.csv",header=T,sep=",")
 
 levels(patient$ah_uh)=c("Affected Hand","Unaffected Hand")
 levels(patient$ah_uh_control)=c("Affected Hand","Unaffected Hand")
@@ -415,15 +416,34 @@ ggplot(tranmean, aes(y=mean_mm,x=ybis))+geom_point(shape=16,size=3)+geom_smooth(
 
 ##Amputee anaysis##
 #test for amputees aw vs uw
-amp_means=tapply(amputee$mm,list(amputee$init2,amputee$ah_uh),mean,NA.RM=T)
+amp_means=tapply(amputee$mm,list(amputee$ah_uh,amputee$init2),mean,NA.RM=T)
 wrist_aw=amp_means[1,16:22]
 wrist_uw=amp_means[3,16:22]
+describe(wrist_aw)
+describe(wrist_uw)
 t.test(wrist_aw,wrist_uw,paired=T)
 
+
 age_amp=c(42,62,46,58,43,67,31,64,43,56,56,47,61,86,38,52,29,37,20,65,32,50)
+x_aw_age=age_amp[12:22]
+y_aw=amp_means[1,12:22]
+cor_aw_age=cor.test(x_aw_age,y_aw)
 plot(age_amp,amp_means[1,]) #plot of age and aw mean loc
+abline(lm(y_aw~x_aw_age), col="red")
+
+x_uh_age=age_amp[c(1:11,14:22)]
+y_uh=amp_means[2,c(1:11,14:22)]
+cor_uh_age=cor.test(x_uh_age,y_uh)
 plot(age_amp,amp_means[2,]) #plot of age and uh mean loc
+abline(lm(y_uh~x_uh_age), col="red")
+
+
+x_uw_age=age_amp[c(16:22)]
+y_uw=amp_means[3,c(16:22)]
+cor_uw_age=cor.test(x_uw_age,y_uw)
 plot(age_amp,amp_means[3,]) #plot of age and uw mean loc
+abline(lm(y_aw~x_aw_age), col="red")
+
 gender_amp=c("m","m","f","m","m","f","f","f","f","m","m","m","m","m","f","m","m","f","m","m","m","m")
 gender_amp=as.factor(gender_amp)
 plot(gender_amp,amp_means[1,]) #plot of gender and aw mean loc
@@ -431,10 +451,14 @@ plot(gender_amp,amp_means[2,]) #plot of gender and uh mean loc
 plot(gender_amp,amp_means[3,]) #plot of gender and uw mean loc
 
 #test for amputees intact hand vs controls hands
-cont_means=tapply(control$mm,list(control$ah_uh_control,control$initials),mean,NA.RM=T) #find means of controls locognosia scores per subject
+cont_means=tapply(control$mm,list(control$ah_uh_control,control$initials),mean,na.rm=TRUE) #find means of controls locognosia scores per subject
 cont_hands=cont_means[1,] #store hand means in a variable
 amp_hands=amp_means[2,c(1:11,14:22)] #store amp hand means in var
+describe(cont_hands)
+describe(amp_hands)
 t.test(cont_hands,amp_hands)
+
+contr_age=contdemo
 
 
 
