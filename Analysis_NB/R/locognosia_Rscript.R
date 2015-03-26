@@ -366,7 +366,7 @@ ggplot(pat_cont, aes(x=factor(init2),y=mm_miss,fill=ah_uh_control))+theme_bw()+t
   scale_y_continuous(breaks=seq(0,120,by=10))+ scale_fill_brewer(palette="Greys")+
   annotate("text", x = 1, y = 38, label = "",size=6)+ annotate("text", x = 11, y = 38, label = "",size=6, fontface="bold")+xlim("Controls","CH","JS","PP","RW","DR1","DR2","DR3","DR4","DR5","EH1","EH2","GF","MS")
 
-plot()
+
 
 aov.within=aov(mean_mm~subject+Error(effector/subject),data=ampwithin)
 summary(aov.within)
@@ -424,7 +424,7 @@ describe(wrist_uw)
 t.test(wrist_aw,wrist_uw,paired=T)
 
 
-age_amp=c(42,62,46,58,43,67,31,64,43,56,56,47,61,86,38,52,29,37,20,65,32,50)
+age_amp=c(42,62,46,58,43,67,31,64,43,56,56,47,61,55,38,52,29,37,20,65,32,50)
 x_aw_age=age_amp[12:22]
 y_aw=amp_means[1,12:22]
 cor_aw_age=cor.test(x_aw_age,y_aw)
@@ -458,7 +458,8 @@ describe(cont_hands)
 describe(amp_hands)
 t.test(cont_hands,amp_hands)
 
-contr_age=contdemo
+contr_age=contdemo$age
+describe(contr_age,na.rm=T)
 
 
 
